@@ -14,7 +14,7 @@ function add() {
   let node = document.createElement("li");
   node.setAttribute("id", `todo_${count}`);
   // node.innerHTML = `${checkBox} ${content} ${change} ${remove}`;
-  node.innerHTML = `${checkBox} ${content} ${remove}`;
+  node.innerHTML = `${checkBox} <span class='todo_text'>${content}</span> ${remove}`;
   document.getElementById('todo_list').appendChild(node);
 
   count++;
@@ -33,12 +33,12 @@ function change(id, content) {
 function toggle(id) {
   let field = document.getElementById(id);
   let toggle = field.getElementsByClassName("toggle")[0];
-  console.log(field.innerHTML, );
+  let todoText = field.getElementsByClassName("todo_text")[0];
   if (toggle.value === "do") {
-    // field.innerText = `<s>${field.innerText}</s>`
-    toggle.value = "undo"
+    todoText.innerHTML = `<s>${todoText.innerText}</s>`;
+    toggle.value = "undo";
   } else {
-    // field.innerText = `${field.innerText}`
-    toggle.value = "do"
+    todoText.innerHTML = `${todoText.innerText}`;
+    toggle.value = "do";
   }
 }
