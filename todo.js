@@ -34,6 +34,7 @@ function add() {
 
   document.getElementById("todo_list").appendChild(li);
 
+  document.getElementById('todo').value = "";
   count++;
 }
 
