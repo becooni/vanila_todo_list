@@ -61,8 +61,15 @@ function remove(id) {
 
 function change(id) {
   let field = document.getElementById(id);
+  let toggleButton = field.getElementsByClassName(`toggle`)[0];
   let todoContent = field.getElementsByClassName(`todo_content`)[0];
-  todoContent.innerText = prompt("수정해요", todoContent.textContent);
+  if (toggleButton.value === finish) {
+    todoContent.innerHTML = prompt("수정해요", todoContent.textContent);
+  } else {
+    let edited = prompt("수정해요", todoContent.textContent);
+    todoContent.innerHTML = `<s>${edited}</s>`;
+  }
+
 }
 
 function toggle(id) {
@@ -73,7 +80,7 @@ function toggle(id) {
     todoText.innerHTML = `<s>${todoText.innerText}</s>`;
     toggleButton.value = unfinish;
   } else {
-    todoText.innerHTML = `${todoText.innerText}`;
+    todoText.innerHTML = todoText.innerText;
     toggleButton.value = finish;
   }
 }
